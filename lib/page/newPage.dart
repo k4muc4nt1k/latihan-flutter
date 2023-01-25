@@ -19,9 +19,12 @@ class NewPages extends StatelessWidget {
 class NewPage extends StatefulWidget {
   NewPage(
       {Key? key,
-      this.title = "New Page"})
+      this.title = "New Page",
+      this.datas})
       : super(key: key);
   final String? title;
+  List<Map<String, dynamic>>? datas;
+
   AuthService serv = new AuthService();
 
   @override
@@ -117,6 +120,9 @@ class _NewPageState extends State<NewPage> {
                                     style: TextStyle(fontSize: 12),
                                   )
                             ]),
+                        for(dynamic data in widget.datas??[])
+                          Container(child: Text(data["nama"]),),
+
                       ],
                     ))),
                   ])),

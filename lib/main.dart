@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:latihan/Profile.dart';
+import 'package:latihan/page/Profile.dart';
 import 'package:latihan/temp/authService.dart';
 import 'package:latihan/page/homePages.dart';
 import 'package:latihan/page/login.dart';

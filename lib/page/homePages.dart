@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:latihan/Profile.dart';
+import 'package:latihan/page/Profile.dart';
 import 'package:latihan/page/dashboard.dart';
 
 
@@ -204,7 +204,7 @@ class HomePageState extends State<HomePage> with SingleTickerProviderStateMixin{
               buttonBotomNavbar(icon: Icon(Icons.person),
                   activeColor: activeColor,
                   onItemSelected: (){
-                    this.body = ProfilePage(title: "Profile",);
+                    this.body = ProfilePage(title: "Profile");
                     if(mounted)
                       setState((){
                         this._selectedIndex = 3;

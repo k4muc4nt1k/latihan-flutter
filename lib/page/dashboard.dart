@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:latihan/model/userModel.dart';
 import 'package:latihan/page/newPage.dart';
 import 'package:latihan/temp/authService.dart';
+import 'package:latihan/widget/button.dart';
 import 'package:latihan/widget/dialogs.dart';
 import 'package:latihan/widget/loading.dart';
 
@@ -42,7 +43,6 @@ class _DashboardPageState extends State<DashboardPage> {
     lm = await serv.getUserProfile();
     this.nama = lm!.namaPengguna!;
     if (mounted) setState(() {});
-
   }
 
   @override
@@ -63,7 +63,8 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: Column(
                   children: [
                     Container(
-                        padding: EdgeInsets.only(top: safePadding+10, right: 10, left: 10),
+                        padding: EdgeInsets.only(
+                            top: safePadding + 10, right: 10, left: 10),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -88,7 +89,8 @@ class _DashboardPageState extends State<DashboardPage> {
                                           Text(
                                             "Halo, ",
                                             style: TextStyle(
-                                                color: Colors.white, fontSize: 14),
+                                                color: Colors.white,
+                                                fontSize: 14),
                                           )
                                         ]),
                                         Row(
@@ -110,14 +112,15 @@ class _DashboardPageState extends State<DashboardPage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      padding: EdgeInsets.all(2),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                        borderRadius: BorderRadius.all(Radius.circular(100))), child:
-                                    Image.asset(
-                                      "assets/logo.png",
-                                      width: 35,
-                                    )),
+                                        padding: EdgeInsets.all(2),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(100))),
+                                        child: Image.asset(
+                                          "assets/logo.png",
+                                          width: 35,
+                                        )),
                                   ],
                                 )
                               ],
@@ -131,20 +134,20 @@ class _DashboardPageState extends State<DashboardPage> {
                         child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 7),
                             // child: SingleChildScrollView(
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
                                   SizedBox(
                                     height: 20,
                                   ),
                                   Container(
                                     margin: EdgeInsets.symmetric(vertical: 3),
-
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 3, vertical: 10),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 3, vertical: 10),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius: BorderRadius.circular(12)),
+                                        borderRadius:
+                                            BorderRadius.circular(12)),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceAround,
@@ -155,7 +158,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                                   .push(CupertinoPageRoute(
                                                 builder:
                                                     (BuildContext context) {
-                                                  return NewPages();
+                                                  return NewPage(title: "Test", datas: [{"nama":"test"}, {"nama":"test 2"}],);
                                                 },
                                               ));
                                             },
@@ -166,27 +169,37 @@ class _DashboardPageState extends State<DashboardPage> {
                                             logo: "logo"),
                                         buttonMenu(
                                             onPressed: () async {
-                                              // await Navigator.of(context)
-                                              //     .push(CupertinoPageRoute(
-                                              //   builder:
-                                              //       (BuildContext context) {
-                                              //     return NewPage();
-                                              //   },
-                                              // ));
+                                              await Navigator.of(context)
+                                                  .push(CupertinoPageRoute(
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return NewPage(title: "Test 123", datas: [{"nama":"test"}, {"nama":"test 2"}],);
+                                                },
+                                              ));
                                             },
                                             name: "Jasa",
                                             info: "",
                                             logo: "logo"),
                                         buttonMenu(
                                             onPressed: () {
-                                              dialogs(context: context, pesan: "Menu Jadwal belum tersedia", action:()=> Navigator.pop(context));
+                                              dialogs(
+                                                  context: context,
+                                                  pesan:
+                                                      "Menu Jadwal belum tersedia",
+                                                  action: () =>
+                                                      Navigator.pop(context));
                                             },
                                             name: "Jadwal",
                                             info: "",
                                             logo: "logo"),
                                         buttonMenu(
                                             onPressed: () {
-                                              dialogs(context: context, pesan: "Menu Riwayat belum tersedia", action:()=> Navigator.pop(context));
+                                              dialogs(
+                                                  context: context,
+                                                  pesan:
+                                                      "Menu Riwayat belum tersedia",
+                                                  action: () =>
+                                                      Navigator.pop(context));
                                             },
                                             name: "Riwayat",
                                             info: "",
@@ -194,9 +207,13 @@ class _DashboardPageState extends State<DashboardPage> {
                                       ],
                                     ),
                                   ),
-                                ])
+                                  Row(children: [
+                                      buttonForm(onPress: (){}, textName: "Test",)
+                                  ],)
+                                ]),
+
                             // )
-                        )),
+                            )),
                   ],
                 ),
               ),
@@ -204,7 +221,8 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: _load ? LoadingPage() : Container(),
                 alignment: FractionalOffset.center,
               ),
-            ]))));
+            ])),
+        ));
   }
 
   Widget buttonMenu(

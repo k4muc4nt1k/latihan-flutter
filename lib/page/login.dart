@@ -198,21 +198,28 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  loginServ()async{
+  loginServ()async {
     // setState((){
     //   this._load  =true;
     // });
-    // ResultListModel rlm = await service.login(
-    //     body: {
-    //       "username": textUserName.text,
-    //       "password": textPassword.text
-    //     });
-    // setState((){
-    //   this._load  =false;
-    // });
+    ResultListModel rlm = await service.login(
+        body: {
+          "username": textUserName.text,
+          "password": textPassword.text
+        });
+    setState(() {
+      this._load = false;
+    });
+
+    ResultListModel rlmGet = await service.getData(
+      "login", data1: textPassword.text, data2: textUserName.text
+    );
+
+    // )
     // try{
     //   if (rlm.data.runtimeType.toString() == "List<dynamic>") {
     //       serv.setLogin(rlm.data[0]);
+
     LoginModel lms = new LoginModel(token: "asasas", email: "a@a.com");
     UserModel um = new UserModel(namaPengguna: "Amin", email: "a@a.com", token: "Test");
         serv.setLogin(lms.toMap());
